@@ -133,11 +133,11 @@ extension AttributedTextProtocol {
         
         #if swift(>=4.1)
         let ds = ranges.compactMap { range in
-            URL(string: String(string[range])).map { Detection(type: .link($0), style: style, range: range, level: Int.max) }
+            URL(string: "https://" + String(string[range])).map { Detection(type: .link($0), style: style, range: range, level: Int.max) }
         }
         #else
         let ds = ranges.flatMap { range in
-            URL(string: String(string[range])).map { Detection(type: .link($0), style: style, range: range) }
+            URL(string: "https://" + String(string[range])).map { Detection(type: .link($0), style: style, range: range) }
         }
         #endif
         
